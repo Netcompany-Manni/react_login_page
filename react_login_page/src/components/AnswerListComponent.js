@@ -2,6 +2,7 @@ import React from 'react';
 import SingleAnswerComponent from './SingleAnswerComponent.js';
 import './AnswerListComponentStyling.css';
 import SubmitComponent from '../components/SubmitComponent.js';
+
 class AnswerListComponent extends React.Component{
     
     constructor(props){
@@ -15,7 +16,10 @@ class AnswerListComponent extends React.Component{
             amountOfWrongAnswers : 0
         }
         this.setAnswerHasBeenChosen.bind(this);
-    }
+       
+
+        }
+    
     
     setAnswerHasBeenChosen = (index) =>{
        if(this.state.chosenAnswer === this.state.options[index]){
