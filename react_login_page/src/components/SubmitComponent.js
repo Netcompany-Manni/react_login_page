@@ -1,5 +1,4 @@
 import React from 'react';
-import './SubmitComponentStyling.css';
 
 const submitComponent = (props) =>{
     return(
@@ -8,5 +7,6 @@ const submitComponent = (props) =>{
         </div>
     )
 };
+
 
 export default submitComponent;

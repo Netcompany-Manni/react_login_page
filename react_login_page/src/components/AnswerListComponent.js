@@ -1,13 +1,14 @@
 import React from 'react';
 import SingleAnswerComponent from './SingleAnswerComponent.js';
 import './AnswerListComponentStyling.css';
+import SubmitComponent from '../components/SubmitComponent.js';
 class AnswerListComponent extends React.Component{
     
     constructor(props){
         super();
         this.state = {
             correctAnswer : props.objekt.questionCorrect,
-            chosenAnswer : "default",
+            chosenAnswer : null,
             options : props.objekt.listOfAnswers,
             questionNummer : props.objekt.questionNummer,
             amountOfCorrectAnswers : 0,
@@ -48,6 +49,11 @@ class AnswerListComponent extends React.Component{
         }
     }
 
+    doShit = () =>{
+        this.props.klikk(this.state.chosenAnswer)
+
+    }
+
     render(){
         return (
             <div id="answer_list_component">
@@ -62,7 +68,12 @@ class AnswerListComponent extends React.Component{
                         <hr></hr>
                     </div>
                 })}
-            </div>
+                {/*Dette er submit knappen under */}
+               <div className="heleKnappen" onClick={() => this.doShit()}>
+               <p>Neste</p>
+               </div>
+
+                </div>
         )
     }
 

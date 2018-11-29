@@ -5,3 +5,13 @@
 .unclicked{
     background: purple;
 }
+
+.heleKnappen{
+    border: solid black 1px;
+    background-color: green;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    font-size: calc(20px + 2vmin);
+    color: white;
+}

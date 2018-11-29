@@ -4,7 +4,7 @@ import './App.css';
 import HeaderComponent from './components/HeaderComponent.js';
 import BodyComponent from './components/BodyComponent.js';
 import AnswerListComponent from './components/AnswerListComponent.js';
-import SubmitComponent from './components/SubmitComponent.js';
+
 
 const apiUrl = 'https://api.jsonbin.io/b/5bfe8cd790a73066ac16d79a/2';
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
       chosenAnswer : null,
       index : 0,
     }
-    this.getNextQuestion.bind(this);
+    this.tryToGetNextQuestion.bind(this);
     
 
   }
@@ -34,9 +34,9 @@ class App extends Component {
       <HeaderComponent title={this.state.questions[this.state.index].questionNummer}></HeaderComponent>
       <BodyComponent question={this.state.questions[this.state.index].questionTekst}></BodyComponent>
 
-      <AnswerListComponent objekt={this.state.questions[this.state.index]}></AnswerListComponent>
+      <AnswerListComponent objekt={this.state.questions[this.state.index]} klikk={this.tryToGetNextQuestion}></AnswerListComponent>
      
-      <SubmitComponent tekst="Neste spørsmål" klikk={this.tryToGetNextQuestion}></SubmitComponent>
+      
      </div>)
     }
     else{
@@ -45,21 +45,27 @@ class App extends Component {
     }
   }
 
- 
 
- tryToGetNextQuestion = () => {
-
- }
-
- getNextQuestion = () => {
-   var maxIndex = this.state.questions.length-1
-   
-   if(maxIndex != this.state.index){
-    this.setState({index : this.state.index+1})
+ tryToGetNextQuestion = (chosenAnswer) => {
+   if(chosenAnswer === null){
+     console.log('Ingen svar har blitt valgt')
    }
    else{
-     console.log('Ingen flere spørsmål')
+    var maxIndex = this.state.questions.length-1
+   
+    if(maxIndex != this.state.index){
+     this.setState({index : this.state.index+1})
+    }
+    else{
+      console.log('Ingen flere spørsmål')
+      {/*TODO: Vis poengsum */}
+    }
    }
+
+
+
+
+  
  }
 
   updateStates = (data) =>{
