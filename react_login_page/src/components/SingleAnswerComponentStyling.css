@@ -1,0 +1,21 @@
+.single_answer_body{
+    border: solid black 1px;
+    background-color: blue;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    font-size: calc(20px + 2vmin);
+    color: white;
+}
+
+.questionText{
+margin: 5vmin;
+}
+
+.clicked{
+    background:yellow;
+}
+
+.unclicked{
+    background: purple;
+}
