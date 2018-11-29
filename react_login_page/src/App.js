@@ -5,7 +5,6 @@ import HeaderComponent from './components/HeaderComponent.js';
 import BodyComponent from './components/BodyComponent.js';
 import AnswerListComponent from './components/AnswerListComponent.js';
 
-
 const apiUrl = 'https://api.jsonbin.io/b/5bfe8cd790a73066ac16d79a/2';
 class App extends Component {
 
@@ -19,8 +18,11 @@ class App extends Component {
     }
     this.tryToGetNextQuestion.bind(this);
     
-
+  
   }
+
+ 
+
 
   componentDidMount(){
     this.getDataFromAPI();
@@ -52,7 +54,7 @@ class App extends Component {
    }
    else{
     var maxIndex = this.state.questions.length-1
-   
+    {/* Legg til et objekt med informasjon i et array som kan brukes på slutten */}
     if(maxIndex != this.state.index){
      this.setState({index : this.state.index+1})
     }
@@ -62,10 +64,6 @@ class App extends Component {
     }
    }
 
-
-
-
-  
  }
 
   updateStates = (data) =>{

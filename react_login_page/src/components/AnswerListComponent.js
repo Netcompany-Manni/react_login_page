@@ -10,24 +10,21 @@ class AnswerListComponent extends React.Component{
         this.state = {
             correctAnswer : props.objekt.questionCorrect,
             chosenAnswer : null,
-            options : props.objekt.listOfAnswers,
             questionNummer : props.objekt.questionNummer,
             amountOfCorrectAnswers : 0,
             amountOfWrongAnswers : 0
         }
         this.setAnswerHasBeenChosen.bind(this);
-       
-
         }
     
-    
     setAnswerHasBeenChosen = (index) =>{
-       if(this.state.chosenAnswer === this.state.options[index]){
+        console.log('Last chosen Answer was ' +this.state.chosenAnswer)
+       if(this.state.chosenAnswer === this.props.objekt.listOfAnswers[index]){
            console.log('Du har allerede valgt dette alternativet')
        }
        else{{/*Another arrow function to make it synchroniously. Otherwise it will show last data, Async */}
-        this.setState({chosenAnswer : this.state.options[index]}, ()=>{
-            console.log(this.state.chosenAnswer)
+        this.setState({chosenAnswer : this.props.objekt.listOfAnswers[index]}, ()=>{
+            console.log('Updated chosenAnswer to ' + this.state.chosenAnswer)
             this.checkIfAnswerIsCorrect()
         });
        }
@@ -43,25 +40,28 @@ class AnswerListComponent extends React.Component{
     }
 
     checkIfAnswerIsCorrect = () =>{
-        if(this.state.correctAnswer == this.state.chosenAnswer){
+        if(this.state.chosenAnswer == this.state.correctAnswer){
             this.updateCorrectAnswers()
-            console.log('correct')
+            console.log('You guessed ' + this.state.chosenAnswer + '. Correct!')
         }
         else{
             this.updateWrongAnswers()
-            console.log('Wrong fam')
+            console.log('You guessed ' + this.state.chosenAnswer + ', but the correct answer was ' +this.state.correctAnswer)
         }
     }
 
     doShit = () =>{
         this.props.klikk(this.state.chosenAnswer)
+        this.setState({chosenAnswer : null}, () => {
+            console.log('The current chosenAnswer is' +this.state.chosenAnswer)
+        })
 
     }
 
     render(){
         return (
             <div id="answer_list_component">
-                {this.state.options.map((ettSvar, index)=>{
+                {this.props.objekt.listOfAnswers.map((ettSvar, index)=>{
                     return <div> 
                         <SingleAnswerComponent 
                         svarAlternativ={ettSvar} 

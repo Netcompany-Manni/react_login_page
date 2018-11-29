@@ -1,14 +1,23 @@
 import React from 'react';
 import './HeaderComponentStyling.css';
 
-const headerComponent = (props) =>{
+class HeaderComponent extends React.Component{
+    constructor(props){
+        super();
+    }
+
+render(){
     return(
         <div className="header_component">
             <p>
-                {props.title}
+                {this.props.title}
             </p>
         </div>
     )
 }
 
-export default headerComponent;
+}
+
+
+
+export default HeaderComponent;
