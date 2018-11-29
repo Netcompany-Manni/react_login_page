@@ -15,10 +15,11 @@ class App extends Component {
       hasLoadedData : null,
       chosenAnswer : null,
       index : 0,
+      antallRiktige : 0,
+      antallFeil : 0,
+      antallSpørsmål : this.state.questions.length
     }
     this.tryToGetNextQuestion.bind(this);
-    
-  
   }
 
  
@@ -48,22 +49,32 @@ class App extends Component {
   }
 
 
- tryToGetNextQuestion = (chosenAnswer) => {
-   if(chosenAnswer === null){
+ tryToGetNextQuestion = (chosenAnswer, correctAnswer) => {
+   if (chosenAnswer === null) {
      console.log('Ingen svar har blitt valgt')
-   }
-   else{
-    var maxIndex = this.state.questions.length-1
-    {/* Legg til et objekt med informasjon i et array som kan brukes på slutten */}
-    if(maxIndex != this.state.index){
-     this.setState({index : this.state.index+1})
-    }
-    else{
-      console.log('Ingen flere spørsmål')
+   } else {
+     console.log('Du valgte ' +chosenAnswer + ' og riktig svar var ' +correctAnswer)
+     if (this.chosenAnswerWasCorrect(chosenAnswer,correctAnswer)) {
+       this.setState({antallRiktige:this.state.antallRiktige+1}, () =>{
+       console.log('Your answer was correct. antallRiktige is now at ' +this.state.antallRiktige)
+       })
+     }
+    
+    var maxIndex = this.state.questions.length - 1; {/* Legg til et objekt med informasjon i et array som kan brukes på slutten */}
+  
+    if (maxIndex != this.state.index) {
+     this.setState({index : this.state.index + 1})
+    } else {
+      console.log('Ingen flere spørsmål') 
       {/*TODO: Vis poengsum */}
     }
+    
    }
 
+ }
+
+ chosenAnswerWasCorrect (chosenAnswer,correctAnswer){
+   return chosenAnswer == correctAnswer ? true : false;
  }
 
   updateStates = (data) =>{

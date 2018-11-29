@@ -51,9 +51,9 @@ class AnswerListComponent extends React.Component{
     }
 
     doShit = () =>{
-        this.props.klikk(this.state.chosenAnswer)
+        this.props.klikk(this.state.chosenAnswer, this.state.correctAnswer)
         this.setState({chosenAnswer : null}, () => {
-            console.log('The current chosenAnswer is' +this.state.chosenAnswer)
+            console.log('The current chosenAnswer is ' +this.state.chosenAnswer)
         })
 
     }
