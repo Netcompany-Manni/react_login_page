@@ -15,9 +15,7 @@ class App extends Component {
       questions : [],
       hasLoadedData : null,
       chosenAnswer : null,
-      correctAnswer : null,
       index : 0,
-      valgtSvar : null
     }
     this.getNextQuestion.bind(this);
     
@@ -36,9 +34,9 @@ class App extends Component {
       <HeaderComponent title={this.state.questions[this.state.index].questionNummer}></HeaderComponent>
       <BodyComponent question={this.state.questions[this.state.index].questionTekst}></BodyComponent>
 
-      <AnswerListComponent listeMedSvar={this.state.questions[this.state.index].listOfAnswers}></AnswerListComponent>
+      <AnswerListComponent objekt={this.state.questions[this.state.index]}></AnswerListComponent>
      
-      <SubmitComponent tekst="Neste spørsmål" klikk={this.getNextQuestion}></SubmitComponent>
+      <SubmitComponent tekst="Neste spørsmål" klikk={this.tryToGetNextQuestion}></SubmitComponent>
      </div>)
     }
     else{
@@ -47,11 +45,9 @@ class App extends Component {
     }
   }
 
- checkIfCorrectAnswer = () =>{
+ 
 
- }
-
- giveNextQuestion = () => {
+ tryToGetNextQuestion = () => {
 
  }
 
@@ -71,6 +67,7 @@ class App extends Component {
     questions : data,
     hasLoadedData : true
   })
+  console.log(this.state.questions[this.state.index])
   }
 
   getDataFromAPI = () => {

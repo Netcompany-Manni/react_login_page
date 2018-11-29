@@ -6,24 +6,22 @@ class SingleAnswerComponent extends React.Component{
     constructor(props){
         super();
         this.state = {
-            hasBeenClicked : false,
-            index : props.index,
-            svarAlternativ : props.svarAlternativ
+            hasBeenClicked : false
         }
     }
 
     render(){
         return(
-            <div className={"single_answer_body " + (this.state.hasBeenClicked ? "clicked" :  "unclicked")} 
-             onClick={this.props.påBakgrunnKlikk(this.state.index)}>
+            <div className={"single_answer_body " + (this.state.hasBeenClicked ? "clicked" :  "unclicked")}
+            onClick={()=>{this.props.påKlikk(this.props.index)}} >
 
-        <div className="questionText" 
-        onClick={()=>this.props.påKlikk(this.state.index)}>
-        {this.state.svarAlternativ} 
+        <div className="questionText">
+        {this.props.svarAlternativ} 
         </div>
 
          </div>
         )
+        
         
     }
 
