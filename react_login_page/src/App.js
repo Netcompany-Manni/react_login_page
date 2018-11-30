@@ -28,7 +28,7 @@ class App extends Component {
     
   }
 
- getObject = () => {
+ getArrayWithRiktigeOgFeil = () => {
   var listOfData = [];
   listOfData[0] = this.state.antallRiktige;
   listOfData[1] = this.state.antallFeil
@@ -93,7 +93,7 @@ class App extends Component {
  }
 
  displayResultPage = () =>{
-   this.setState({dataForResultDisplayerComponent : this.getObject()}, () =>{
+   this.setState({dataForResultDisplayerComponent : this.getArrayWithRiktigeOgFeil()}, () =>{
      console.log('displayResultPage is now ' + this.state.displayResultPage)
    })
  }

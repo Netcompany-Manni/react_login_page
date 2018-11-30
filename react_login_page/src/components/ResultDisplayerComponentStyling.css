@@ -1,6 +1,6 @@
 .resultShower{
-    background-color: red;
-    min-height: 20vh;
+    background-color: skyblue;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,3 +8,11 @@
     font-size: calc(20px + 2vmin);
     color: white;
 }
+
+
+
+.mannisSpesial{
+    font-size: 6vmin;
+    color: green;
+}
+
