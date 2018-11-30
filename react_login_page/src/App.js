@@ -16,14 +16,10 @@ class App extends Component {
       chosenAnswer : null,
       index : 0,
       antallRiktige : 0,
-      antallFeil : 0,
-      antallSpørsmål : this.state.questions.length
+      antallFeil : 0
     }
     this.tryToGetNextQuestion.bind(this);
   }
-
- 
-
 
   componentDidMount(){
     this.getDataFromAPI();
@@ -95,12 +91,7 @@ class App extends Component {
 
     });
   }
-
-  displayNextQuestion = () =>{
-    
-  }
-
-  
+ 
 
 }
 
