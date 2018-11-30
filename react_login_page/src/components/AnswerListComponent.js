@@ -31,27 +31,17 @@ class AnswerListComponent extends React.Component{
          
     }
 
-    updateCorrectAnswers = () =>{
-        this.setState({amountOfCorrectAnswers : this.state.amountOfCorrectAnswers+1})
-    }
-
-    updateWrongAnswers = () =>{
-        this.setState({amountOfWrongAnswers : this.state.amountOfWrongAnswers+1})
-    }
-
     checkIfAnswerIsCorrect = () =>{
-        if(this.state.chosenAnswer == this.state.correctAnswer){
-            this.updateCorrectAnswers()
+        if(this.state.chosenAnswer === this.props.objekt.questionCorrect){
             console.log('You guessed ' + this.state.chosenAnswer + '. Correct!')
         }
         else{
-            this.updateWrongAnswers()
-            console.log('You guessed ' + this.state.chosenAnswer + ', but the correct answer was ' +this.state.correctAnswer)
+            console.log('You guessed ' + this.state.chosenAnswer + ', but the correct answer was ' + this.props.objekt.questionCorrect)
         }
     }
 
     doShit = () =>{
-        this.props.klikk(this.state.chosenAnswer, this.state.correctAnswer)
+        this.props.klikk(this.state.chosenAnswer, this.props.objekt.questionCorrect)
         this.setState({chosenAnswer : null}, () => {
             console.log('The current chosenAnswer is ' +this.state.chosenAnswer)
         })
