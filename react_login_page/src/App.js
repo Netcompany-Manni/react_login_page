@@ -5,6 +5,8 @@ import HeaderComponent from './components/HeaderComponent.js';
 import BodyComponent from './components/BodyComponent.js';
 import AnswerListComponent from './components/AnswerListComponent.js';
 import ResultDisplayerComponent from './components/ResultDisplayerComponent.js';
+import ClipLoader from 'react-spinners/ClipLoader'
+import './components/ClipLoaderStyling.css'; {/* Currently not being used */}
 const apiUrl = 'https://api.jsonbin.io/b/5bfe8cd790a73066ac16d79a/2';
 class App extends Component {
 
@@ -55,8 +57,14 @@ class App extends Component {
      </div>)
     }
     else{
-      {/*Få det til å vise en spinner her */}
-      return <p>Sorry bror</p>
+     
+      return(
+        <ClipLoader
+          className='clipLoader'
+          sizeUnit={"px"}
+          size={550}
+          color={'#123abc'}></ClipLoader>
+      )
     }
   }
 
